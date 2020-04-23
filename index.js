@@ -66,16 +66,6 @@ const personOne = new Person({
 })
 
 
-console.log(personOne.toString())
-personOne.eat('apple')
-personOne.eat('Pear')
-personOne.eat('apple')
-personOne.eat('Pear')
-personOne.eat('apple')
-console.log(personOne.stomach)
-personOne.poop();
-console.log(personOne.stomach)
-
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
