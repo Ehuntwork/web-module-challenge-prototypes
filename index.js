@@ -51,19 +51,16 @@ Person.prototype.eat = function(food){
   }
   else{
     return 'Someones gotta poop!';
-  }
-}
+  };
+};
 Person.prototype.poop = function(){
   this.stomach = [];
-}
+};
 Person.prototype.toString = function(){
-  return `${this.name}, age ${this.age}`;
-}
+  return `${this.name}, ${this.age}`;
+};
 
-const personOne = new Person({
-  name: 'Emily',
-  age: 20,
-})
+
 
 
 /*
@@ -80,8 +77,14 @@ const personOne = new Person({
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(att) {
+  this.model = att.model;
+  this.milesPerGallon = att.milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+Car.prototype.fill = function(gallons){
+  this.tank = this.tank +gallons;
 }
 
 /*
@@ -91,12 +94,19 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(babyAttributes) {
+  Person.call(this, babyAttributes);
+  this.favoriteToy = babyAttributes.favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
 
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`;
 }
 
+
 /* 
-  TASK 4
+  TASK 4 
 
   In your own words explain the four principles for the "this" keyword below:
   1. Global/window binding refers to the widndow. It's not really used and just kinda the default.
@@ -104,7 +114,7 @@ function Baby() {
   3. New Binding uses constructive functions to refer to  objects created later
   4. Explicit binding is using the .apply and .call.
 */
-
+///done/
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
