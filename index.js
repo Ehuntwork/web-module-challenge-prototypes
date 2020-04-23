@@ -28,7 +28,7 @@ Airplane.prototype.land = function () {
 
 /*
   TASK 1
-    - Write a Person Constructor that initializes `name` and `age` from arguments.
+    - Write a Person Constructor that initializes `name` and `age` from arguments.///////////////////////////////////////////////////
     - All instances of Person should initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
         + When eating an edible, it should be pushed into the `stomach`.
@@ -39,9 +39,42 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(attributes) {
+  this.name = attributes.name;
+  this.age = attributes.age;
+  this.stomach = [];
+};
 
+Person.prototype.eat = function(food){
+  if(this.stomach.length < 10){
+    this.stomach.push(food)
+  }
+  else{
+    return 'Someones gotta poop!';
+  }
 }
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+Person.prototype.toString = function(){
+  return `${this.name}, age ${this.age}`;
+}
+
+const personOne = new Person({
+  name: 'Emily',
+  age: 20,
+})
+
+
+console.log(personOne.toString())
+personOne.eat('apple')
+personOne.eat('Pear')
+personOne.eat('apple')
+personOne.eat('Pear')
+personOne.eat('apple')
+console.log(personOne.stomach)
+personOne.poop();
+console.log(personOne.stomach)
 
 /*
   TASK 2
@@ -76,10 +109,10 @@ function Baby() {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Global/window binding refers to the widndow. It's not really used and just kinda the default.
+  2. Implici binding only affects objects with methods.
+  3. New Binding uses constructive functions to refer to  objects created later
+  4. Explicit binding is using the .apply and .call.
 */
 
 
